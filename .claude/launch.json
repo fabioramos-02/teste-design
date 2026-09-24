@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "npx.cmd",
+      "runtimeArgs": ["-y", "pnpm@10", "dev"],
+      "port": 3000
+    }
+  ]
+}
