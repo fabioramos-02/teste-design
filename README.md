@@ -157,6 +157,8 @@ Pra achar outros componentes: abra o Storybook, escolha o componente, aba **Code
 | `pnpm não é reconhecido` | pnpm não instalado | Use `npx.cmd -y pnpm@10 ...` |
 | `npx.ps1 não pode ser carregado` | Política de scripts do PowerShell | Use `npx.cmd` em vez de `npx` |
 | `EPERM ... Program Files\nodejs` | `corepack enable` sem admin | Não precisa, use `npx.cmd -y pnpm@10` |
+| `Attempted to call createDsClientComponent() from the server` | Importou de `@plataforma-xvia/ds-react` (client) num Server Component | Importe de `@plataforma-xvia/ds-react/server`, ou mova para arquivo com `"use client"` |
+| `the name DsX is defined multiple times` | Mesmo componente importado das duas entradas | Deixe um import só |
 | Componente sem estilo | Faltou o `<style>` do `layout.tsx` | Confira o `app/layout.tsx` |
 | Erro de `window`/`document` no build | Faltou `serverExternalPackages` | Confira o `next.config.ts` |
 
