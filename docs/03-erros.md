@@ -26,13 +26,12 @@ Procure a mensagem (Ctrl+F).
 | Erro de `window`/`document` no build | Faltou `serverExternalPackages` | Confira `next.config.ts` |
 | Meu CSS não vence o do DS | Camadas fora de ordem | `@layer ds.primitives, ds.semantic, ds.theme, app;` no topo |
 
-## CI (GitHub Actions)
+## Rede e CI
 
 | Erro | Causa | Solução |
 |---|---|---|
-| `Secret GITLAB_MS_NPM_TOKEN não cadastrado` | Secret não existe no repositório | `gh secret set GITLAB_MS_NPM_TOKEN` |
-| `ERR_PNPM_FETCH_404 ...tgz` com `An authorization header was used` | Secret vazio ou token inválido (GitLab responde 404, não 401) | Recadastre o secret com token válido |
-| 404 no Actions | Dono do token saiu do grupo ou token expirou | Gere outro token e atualize o secret |
+| `ERR_SOCKET_TIMEOUT` nos pacotes `@plataforma-xvia` | Fora da rede do governo (casa sem VPN, GitHub Actions, nuvem) | Instale na rede do governo ou via VPN |
+| `ERR_PNPM_FETCH_404 ...tgz` com `An authorization header was used` | Token vazio ou inválido (GitLab responde 404, não 401) | Confira a variável e gere outro token |
 
 ---
 

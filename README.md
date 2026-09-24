@@ -9,7 +9,7 @@ Serve de referência para órgãos que vão consumir o DS.
 
 ## Rodar em 4 passos
 
-1. Tenha acesso ao grupo **`xvia`** no `gitlabs.ms.gov.br` (peça à equipe X-Via).
+1. Esteja **na rede do governo** (ou VPN) e com acesso ao grupo **`xvia`** no `gitlabs.ms.gov.br` (peça à equipe X-Via).
 2. Crie um token **Legacy** com escopo `read_api` e guarde:
 
    ```bash
@@ -40,7 +40,7 @@ Travou? Veja [Erros comuns](docs/03-erros.md).
 
 | | |
 |---|---|
-| [1. Instalação](docs/01-instalacao.md) | Passo a passo completo, token, `.npmrc`, CI |
+| [1. Instalação](docs/01-instalacao.md) | Passo a passo completo, token, `.npmrc`, rede |
 | [2. Como usar](docs/02-como-usar.md) | Server × Client, props, formulários, alertas |
 | [3. Erros comuns](docs/03-erros.md) | Mensagem de erro → solução |
 | [4. Sobre a POC](docs/04-poc.md) | Telas, componentes, homologação, lacunas do DS |

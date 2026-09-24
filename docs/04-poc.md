@@ -23,7 +23,6 @@ Portal fictício do Corpo de Bombeiros MS. Só componentes e tokens do DS — ne
 | `app/faq.tsx` | FAQ paginado (Client) |
 | `app/vistorias/page.tsx` | Cabeçalho da tela (Server) |
 | `app/vistorias/crud.tsx` | CRUD (Client) |
-| `.github/workflows/ci.yml` | Build no GitHub com o token via secret |
 
 ## Homologação — 24/09/2026
 

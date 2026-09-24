@@ -103,15 +103,13 @@ npx.cmd -y pnpm@10 dev
 
 Abra http://localhost:3000.
 
-## Passo 7 (opcional) — CI no GitHub
+## Rede: só dentro do governo
 
-`.github/workflows/ci.yml` instala e builda a cada push. Cadastre o token como secret:
+O `gitlabs.ms.gov.br` **não responde fora da rede do governo**. Instale na rede da SETDIG/órgão
+(ou via VPN). Fora dela, o download dos pacotes trava com `ERR_SOCKET_TIMEOUT`.
 
-```bash
-gh secret set GITLAB_MS_NPM_TOKEN --repo fabioramos-02/teste-design
-```
-
-Pede o valor: cole e Enter. Ou pela tela: **Settings → Secrets and variables → Actions**.
+Por isso **CI na nuvem (GitHub Actions) não funciona**: os runners ficam fora da rede.
+Para CI, use o GitLab CI do próprio `gitlabs.ms.gov.br` ou um runner dentro da rede.
 
 ---
 
