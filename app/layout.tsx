@@ -9,13 +9,15 @@ import {
   DsNavbar,
 } from "@plataforma-xvia/ds-react/server";
 import "./app.css";
+import { href, REPO } from "./href";
 
 const CRITICAL_CSS = `${DS_TOKENS_CSS}\n${DS_THEMES_CSS}\n${DS_FALLBACK_CSS}`;
 
 const NAV = JSON.stringify([
-  { label: "Início", href: "/", icon: "home" },
-  { label: "Vistorias", href: "/vistorias", icon: "file-text" },
-  { label: "Design System", href: "https://designsystem.digital.ms.gov.br", icon: "external-link" },
+  { label: "Início", href: href("/"), icon: "home" },
+  { label: "Vistorias", href: href("/vistorias/"), icon: "file-text" },
+  { label: "Documentação", href: href("/docs/"), icon: "book" },
+  { label: "GitHub", href: REPO, icon: "external-link" },
 ]);
 
 export const metadata: Metadata = {
@@ -37,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               { label: "Ir para rodapé", href: "#rodape" },
             ])}
           />
-          <DsHeader homeHref="/" homeLabel="Início — Bombeiros MS" navItems={NAV}>
+          <DsHeader homeHref={href("/")} homeLabel="Início — Bombeiros MS" navItems={NAV}>
             <span slot="brand" className="brand">
               <DsIcon name="flame" size="xl" />
               <span>
@@ -57,12 +59,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             {
               heading: "Bombeiros MS",
               links: [
-                { label: "Solicitar vistoria", href: "/vistorias" },
+                { label: "Solicitar vistoria", href: href("/vistorias/") },
               ],
             },
             {
               heading: "Design System",
               links: [
+                { label: "Documentação da POC", href: href("/docs/") },
+                { label: "Repositório no GitHub", href: REPO },
                 { label: "Storybook", href: "https://designsystem.digital.ms.gov.br" },
                 { label: "Guia React", href: "https://designsystem.digital.ms.gov.br/?path=/docs/primeiros-passos-react--docs" },
               ],

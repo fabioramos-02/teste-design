@@ -8,9 +8,10 @@ Portal fictício do Corpo de Bombeiros MS. Só componentes e tokens do DS — ne
 |---|---|---|
 | **Moldura** | Topo e rodapé de todas as páginas | `DsAccessibilityBar` `DsHeader` `DsNavbar` `DsIcon` `DsFooter` |
 | **Home** `/` | Entrada enxuta: apresenta a POC e leva ao CRUD | `DsPageHeader` `DsSectionHeading` `DsServiceCard` `DsButton` |
+| **Documentação** `/docs` | Estes guias renderizados com o DS (estilo MkDocs) | `DsPageHeader` `DsBreadcrumb` `DsMenu` `DsServiceCard` `DsButton` |
 | **Vistorias** `/vistorias` | CRUD: cadastrar, buscar, filtrar, editar, excluir | `DsPageHeader` `DsBreadcrumb` `DsCombobox` `DsSelect` `DsRadio` `DsSwitch` `DsCheckbox` `DsButton` `DsBadge` `DsCard` |
 
-17 de 34 componentes do DS em uso — foco no CRUD. Dados salvos no `localStorage` (sem backend).
+18 de 34 componentes do DS em uso — foco no CRUD. Dados salvos no `localStorage` (sem backend).
 
 ## Arquivos
 
@@ -22,6 +23,20 @@ Portal fictício do Corpo de Bombeiros MS. Só componentes e tokens do DS — ne
 | `app/page.tsx` | Home (Server) |
 | `app/vistorias/page.tsx` | Cabeçalho da tela (Server) |
 | `app/vistorias/crud.tsx` | CRUD (Client) |
+| `app/docs/` | Lê `docs/*.md` no build e mostra com o DS |
+| `app/href.ts` | Prefixo de link para o GitHub Pages + link do repositório |
+| `scripts/deploy.mjs` | Build estático e publicação no GitHub Pages |
+
+## Publicar no GitHub Pages
+
+O GitHub Actions não alcança o registry (ver [Rede](01-instalacao.md#rede-só-dentro-do-governo)).
+Então o build roda **na sua máquina, dentro da rede**, e só o site pronto vai para a branch `gh-pages`:
+
+```bash
+npx.cmd -y pnpm@10 run deploy
+```
+
+Site: https://fabioramos-02.github.io/teste-design/
 
 ## Homologação — 24/09/2026
 

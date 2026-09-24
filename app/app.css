@@ -116,6 +116,97 @@
     color: var(--ds-color-text-muted);
   }
 
+  /* Documentação estilo MkDocs: menu à esquerda, texto à direita */
+  .docs {
+    display: grid;
+    gap: var(--ds-space-6);
+    grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+    align-items: start;
+  }
+  @media (max-width: 56rem) {
+    .docs {
+      grid-template-columns: 1fr;
+    }
+  }
+  .docs__nav {
+    position: sticky;
+    top: var(--ds-space-4);
+  }
+  .docs__pager {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--ds-space-3);
+    flex-wrap: wrap;
+    margin-top: var(--ds-space-8);
+    padding-top: var(--ds-space-5);
+    border-top: 1px solid var(--ds-color-border);
+  }
+  .prose {
+    max-width: 48rem;
+    line-height: var(--ds-text-body-large-line-height);
+  }
+  .prose h2 {
+    font-family: var(--ds-text-heading-3-family);
+    font-size: var(--ds-text-heading-3-size);
+    margin: var(--ds-space-7) 0 var(--ds-space-3);
+    scroll-margin-top: var(--ds-space-4);
+  }
+  .prose h3 {
+    font-family: var(--ds-text-heading-4-family);
+    font-size: var(--ds-text-heading-4-size);
+    margin: var(--ds-space-5) 0 var(--ds-space-2);
+  }
+  .prose a {
+    color: var(--ds-color-link);
+  }
+  .prose a:hover {
+    color: var(--ds-color-link-hover);
+  }
+  .prose code {
+    font-size: 0.9em;
+    padding: 0.1em 0.35em;
+    border-radius: var(--ds-radius-xsm);
+    background: var(--ds-color-surface-muted);
+  }
+  .prose pre {
+    overflow-x: auto;
+    padding: var(--ds-space-4);
+    border-radius: var(--ds-radius-sm);
+    background: var(--ds-color-surface-strong);
+    border: 1px solid var(--ds-color-border);
+  }
+  .prose pre code {
+    padding: 0;
+    background: none;
+  }
+  .prose table {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin: var(--ds-space-4) 0;
+    font-size: var(--ds-text-body-small-size);
+  }
+  .prose th,
+  .prose td {
+    text-align: left;
+    vertical-align: top;
+    padding: var(--ds-space-2) var(--ds-space-3);
+    border-bottom: 1px solid var(--ds-color-border);
+  }
+  .prose th {
+    background: var(--ds-color-surface-muted);
+  }
+  .prose blockquote {
+    margin: var(--ds-space-4) 0;
+    padding: var(--ds-space-3) var(--ds-space-4);
+    border-left: 4px solid var(--ds-color-status-warning-fg);
+    background: var(--ds-color-status-warning-bg);
+    border-radius: var(--ds-radius-sm);
+  }
+  .prose blockquote p {
+    margin: 0;
+  }
+
   /* Entrada escalonada; desligada com reduced-motion */
   @media (prefers-reduced-motion: no-preference) {
     .reveal > * {

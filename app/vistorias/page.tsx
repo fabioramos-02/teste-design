@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { DsBreadcrumb, DsPageHeader } from "@plataforma-xvia/ds-react/server";
 import { Crud } from "./crud";
+import { href } from "../href";
 
 export const metadata: Metadata = { title: "Vistorias · Bombeiros MS" };
 
-export default async function Page({ searchParams }: PageProps<"/vistorias">) {
-  const { q } = await searchParams;
+export default function Page() {
   return (
     <>
       <div className="section section--muted">
@@ -18,14 +18,14 @@ export default async function Page({ searchParams }: PageProps<"/vistorias">) {
           >
             <DsBreadcrumb
               slot="breadcrumb"
-              items={JSON.stringify([{ label: "Início", href: "/" }, { label: "Vistorias" }])}
+              items={JSON.stringify([{ label: "Início", href: href("/") }, { label: "Vistorias" }])}
             />
           </DsPageHeader>
         </div>
       </div>
       <section className="section">
         <div className="wrap">
-          <Crud initialQuery={typeof q === "string" ? q : ""} />
+          <Crud />
         </div>
       </section>
     </>

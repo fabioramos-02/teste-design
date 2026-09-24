@@ -53,13 +53,13 @@ function novoId() {
   return `CBM-2026-${String(Math.floor(Math.random() * 9000) + 1000)}`;
 }
 
-export function Crud({ initialQuery }: { initialQuery: string }) {
+export function Crud() {
   const [lista, setLista] = useState<Vistoria[]>(SEED);
   const [editando, setEditando] = useState<Vistoria | null>(null);
   const [excluir, setExcluir] = useState<Vistoria | null>(null);
   const [alerta, setAlerta] = useState<Alerta | null>(null);
   const [filtro, setFiltro] = useState<"" | Status>("");
-  const [busca, setBusca] = useState(initialQuery);
+  const [busca, setBusca] = useState("");
   const [municipio, setMunicipio] = useState("");
   const [formKey, setFormKey] = useState(0);
 

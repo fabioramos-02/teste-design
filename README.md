@@ -6,6 +6,8 @@ portal fictício do Corpo de Bombeiros com **Home** e **CRUD de vistorias**.
 Serve de referência para órgãos que vão consumir o DS.
 
 > ✅ **Homologado em 24/09/2026** · Next.js 16 · `ds-react 0.3.2`
+>
+> 🌐 **Ver funcionando:** https://fabioramos-02.github.io/teste-design/
 
 ## Rodar em 4 passos
 
@@ -43,7 +45,9 @@ Travou? Veja [Erros comuns](docs/03-erros.md).
 | [1. Instalação](docs/01-instalacao.md) | Passo a passo completo, token, `.npmrc`, rede |
 | [2. Como usar](docs/02-como-usar.md) | Server × Client, props, formulários, alertas |
 | [3. Erros comuns](docs/03-erros.md) | Mensagem de erro → solução |
-| [4. Sobre a POC](docs/04-poc.md) | Telas, componentes, homologação, lacunas do DS |
+| [4. Sobre a POC](docs/04-poc.md) | Telas, componentes, publicação, homologação, lacunas do DS |
+
+Os mesmos guias aparecem no site, em [/docs](https://fabioramos-02.github.io/teste-design/docs/).
 
 ## Links
 

@@ -1,10 +1,11 @@
 // Home — Server Component: HTML pronto do servidor
 import { DsButton, DsPageHeader, DsSectionHeading, DsServiceCard } from "@plataforma-xvia/ds-react/server";
+import { href, REPO } from "./href";
 
 const SERVICOS = [
-  { heading: "Solicitar vistoria de segurança contra incêndio", href: "/vistorias" },
-  { heading: "Consultar protocolo de vistoria", href: "/vistorias" },
-  { heading: "Editar ou cancelar solicitação", href: "/vistorias" },
+  { heading: "Solicitar vistoria de segurança contra incêndio", href: href("/vistorias/") },
+  { heading: "Consultar protocolo de vistoria", href: href("/vistorias/") },
+  { heading: "Editar ou cancelar solicitação", href: href("/vistorias/") },
 ];
 
 export default function Home() {
@@ -18,9 +19,17 @@ export default function Home() {
             description="Ambiente de teste dos componentes do DS com um CRUD de vistorias. Dados fictícios."
             icon="flame"
           >
-            <DsButton slot="actions" href="/vistorias" icon="arrow-right" iconPosition="end">
-              Abrir CRUD de vistorias
-            </DsButton>
+            <div slot="actions" className="row">
+              <DsButton href={href("/vistorias/")} icon="arrow-right" iconPosition="end">
+                Abrir CRUD de vistorias
+              </DsButton>
+              <DsButton href={href("/docs/")} appearance="outline" icon="book">
+                Documentação
+              </DsButton>
+              <DsButton href={REPO} target="_blank" appearance="text" icon="external-link" iconPosition="end">
+                GitHub
+              </DsButton>
+            </div>
           </DsPageHeader>
         </div>
       </div>
