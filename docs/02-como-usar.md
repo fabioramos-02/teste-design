@@ -49,7 +49,7 @@ export default function Page() {
 }
 ```
 
-**Client** — `app/faq.tsx`:
+**Client** — exemplo (o CRUD real está em `app/vistorias/crud.tsx`):
 
 ```tsx
 "use client";

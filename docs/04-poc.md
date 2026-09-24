@@ -7,10 +7,10 @@ Portal fictício do Corpo de Bombeiros MS. Só componentes e tokens do DS — ne
 | Tela | O que faz | Componentes |
 |---|---|---|
 | **Moldura** | Topo e rodapé de todas as páginas | `DsAccessibilityBar` `DsHeader` `DsNavbar` `DsIcon` `DsFooter` |
-| **Home** `/` | Página institucional | `DsSearch` `DsStat` `DsCard` `DsSectionHeading` `DsServiceCard` `DsTile` `DsSteps` `DsLinkCard` `DsNewsCard` `DsAccordion` `DsPagination` `DsFeedback` |
+| **Home** `/` | Entrada enxuta: apresenta a POC e leva ao CRUD | `DsPageHeader` `DsSectionHeading` `DsServiceCard` `DsButton` |
 | **Vistorias** `/vistorias` | CRUD: cadastrar, buscar, filtrar, editar, excluir | `DsPageHeader` `DsBreadcrumb` `DsCombobox` `DsSelect` `DsRadio` `DsSwitch` `DsCheckbox` `DsButton` `DsBadge` `DsCard` |
 
-29 de 34 componentes do DS em uso. Dados salvos no `localStorage` (sem backend).
+17 de 34 componentes do DS em uso — foco no CRUD. Dados salvos no `localStorage` (sem backend).
 
 ## Arquivos
 
@@ -20,7 +20,6 @@ Portal fictício do Corpo de Bombeiros MS. Só componentes e tokens do DS — ne
 | `app/layout.tsx` | CSS crítico + moldura |
 | `app/app.css` | Layout (`@layer app`, só tokens) |
 | `app/page.tsx` | Home (Server) |
-| `app/faq.tsx` | FAQ paginado (Client) |
 | `app/vistorias/page.tsx` | Cabeçalho da tela (Server) |
 | `app/vistorias/crud.tsx` | CRUD (Client) |
 
@@ -33,7 +32,7 @@ DS: `ds-react 0.3.2` · `ds-core 0.3.2` · `ds-tokens 0.2.0` · `ds-icons 0.2.0`
 - [x] `pnpm build` passa
 - [x] HTML vem pronto do servidor (SSR, sem JavaScript)
 - [x] Componentes estilizados
-- [x] Acordeão, paginação, combobox interativos
+- [x] Combobox, select, rádio, switch e checkbox em formulário
 - [x] CRUD completo com alertas
 - [x] Console sem erros
 

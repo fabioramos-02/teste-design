@@ -58,7 +58,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               heading: "Bombeiros MS",
               links: [
                 { label: "Solicitar vistoria", href: "/vistorias" },
-                { label: "Perguntas frequentes", href: "/#faq" },
               ],
             },
             {
