@@ -114,14 +114,36 @@ Abra http://localhost:3000.
 
 ---
 
-## 4. O que o código faz (4 arquivos)
+## 4. O que a POC mostra
+
+Duas telas, dados fictícios (Corpo de Bombeiros), **só componentes e tokens do DS** — nenhuma cor escrita à mão.
+
+| Tela | Componentes do DS |
+|---|---|
+| **Moldura** (todas as páginas) | `DsAccessibilityBar`, `DsHeader`, `DsNavbar`, `DsIcon`, `DsFooter` |
+| **Home** `/` | `DsSearch`, `DsStat`, `DsCard`, `DsSectionHeading`, `DsServiceCard`, `DsTile`, `DsSteps`, `DsLinkCard`, `DsNewsCard`, `DsAccordion`, `DsPagination`, `DsFeedback` |
+| **Vistorias** `/vistorias` (CRUD) | `DsPageHeader`, `DsBreadcrumb`, `DsCombobox`, `DsSelect`, `DsRadio`, `DsSwitch`, `DsCheckbox`, `DsButton`, `DsBadge`, `DsCard` (alertas) |
+
+CRUD: cadastrar, listar, buscar, filtrar por status, editar e excluir (com confirmação).
+Salva no `localStorage` do navegador — sem backend.
+
+**Alertas:** o DS não tem componente de alerta. Usamos `DsCard` com `tone` (`success`, `info`,
+`warning`, `danger`) + `icon`, dentro de `role="status"` / `aria-live` pra leitor de tela anunciar.
+
+**Lacunas do DS encontradas** (levar à X-Via): sem campo de texto (`input`), sem alerta, sem tabela, sem modal.
+Na POC, o campo de texto é um `<input>` nativo estilizado com os tokens (`app/app.css`).
+
+### Arquivos
 
 | Arquivo | Papel |
 |---|---|
 | `next.config.ts` | `serverExternalPackages: ["@plataforma-xvia/ds-core"]` — obrigatório, o DS roda no servidor |
-| `app/layout.tsx` | Injeta o CSS dos tokens/temas no `<head>` (sem isso, componentes ficam sem estilo) |
-| `app/page.tsx` | **Server Component** — importa de `@plataforma-xvia/ds-react/server`. HTML pronto do servidor |
-| `app/faq.tsx` | **Client Component** (`"use client"`) — importa de `@plataforma-xvia/ds-react`. Tem estado e eventos |
+| `app/layout.tsx` | CSS crítico dos tokens no `<head>` + moldura (header, navbar, footer) |
+| `app/app.css` | Layout da aplicação na camada `@layer app`, só com tokens `--ds-*` |
+| `app/page.tsx` | Home — **Server Component**, importa de `@plataforma-xvia/ds-react/server` |
+| `app/faq.tsx` | FAQ paginado — **Client Component** (`"use client"`), importa de `@plataforma-xvia/ds-react` |
+| `app/vistorias/page.tsx` | Cabeçalho da tela (Server) |
+| `app/vistorias/crud.tsx` | CRUD completo (Client) |
 
 **Regra de ouro:** qual import usar?
 
@@ -132,7 +154,19 @@ Pra achar outros componentes: abra o Storybook, escolha o componente, aba **Code
 
 ---
 
-## 5. Checklist de homologação
+## 5. CI no GitHub (token como secret)
+
+`.github/workflows/ci.yml` instala e builda a cada push. Precisa do token no repositório — **nunca no código**:
+
+```bash
+gh secret set GITLAB_MS_NPM_TOKEN --repo fabioramos-02/teste-design
+```
+
+O comando pede o valor (cole o token e Enter). Ou pela tela: **Settings → Secrets and variables → Actions → New repository secret**.
+
+---
+
+## 6. Checklist de homologação
 
 - [x] `npx.cmd -y pnpm@10 view @plataforma-xvia/ds-react version` mostra uma versão
 - [x] `pnpm dev` sobe sem erro
@@ -142,10 +176,11 @@ Pra achar outros componentes: abra o Storybook, escolha o componente, aba **Code
 - [x] Paginação muda o número "Página atual"
 - [x] Console do navegador sem erros
 - [x] `pnpm build` passa
+- [x] CRUD: cadastrar, validar, editar, filtrar e excluir com alertas
 
 ---
 
-## 6. Erros comuns
+## 7. Erros comuns
 
 | Erro | Causa | Solução |
 |---|---|---|

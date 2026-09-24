@@ -1,0 +1,193 @@
+/* Camada da aplicação: só layout e composição. Cor, fonte, raio e espaço vêm dos tokens do DS. */
+/* Ordem canônica repetida aqui: se este arquivo carregar antes do CSS crítico, "app" continua por cima. */
+@layer ds.primitives, ds.semantic, ds.theme, app;
+
+@layer app {
+  body {
+    margin: 0;
+    background: var(--ds-color-surface);
+    color: var(--ds-color-text-default);
+    font-family: var(--ds-font-family-sans);
+  }
+
+  .wrap {
+    width: min(72rem, 100% - 2 * var(--ds-space-4));
+    margin-inline: auto;
+  }
+
+  .section {
+    padding-block: var(--ds-space-8);
+  }
+  .section--muted {
+    background: var(--ds-color-surface-muted);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ds-space-3);
+    color: var(--ds-color-brand-fg);
+    line-height: 1.1;
+  }
+  .brand small {
+    display: block;
+    font-size: var(--ds-text-tiny-size);
+    opacity: 0.85;
+  }
+
+  /* Hero: faixa da marca com a busca em destaque */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--ds-color-brand-bg-strong);
+    color: var(--ds-color-brand-fg);
+    padding-block: var(--ds-space-8);
+  }
+  .hero::after {
+    /* ponytail: chama decorativa em CSS puro, cor da marca */
+    content: "";
+    position: absolute;
+    inset: auto -10% -60% auto;
+    width: 32rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--ds-color-brand-golden) 0%, transparent 65%);
+    opacity: 0.25;
+    pointer-events: none;
+  }
+  .hero h1 {
+    font-family: var(--ds-text-display-family);
+    font-size: clamp(var(--ds-font-size-32), 5vw, var(--ds-font-size-56));
+    line-height: 1.05;
+    margin: var(--ds-space-2) 0 var(--ds-space-4);
+    max-width: 18ch;
+  }
+  .hero p {
+    font-size: var(--ds-text-body-large-size);
+    max-width: 52ch;
+    margin: 0 0 var(--ds-space-6);
+  }
+  .hero__eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--ds-text-uppercase-size);
+    font-weight: var(--ds-font-weight-bold);
+  }
+  .hero__search {
+    max-width: 40rem;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: var(--ds-space-4);
+    margin-top: calc(-1 * var(--ds-space-6));
+    position: relative;
+    z-index: 1;
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--ds-space-4);
+    grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+    margin-top: var(--ds-space-5);
+  }
+  .grid--tiles {
+    grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));
+  }
+  .split {
+    display: grid;
+    gap: var(--ds-space-6);
+    grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
+    align-items: start;
+  }
+  .stack > * + * {
+    margin-top: var(--ds-space-4);
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ds-space-2);
+    align-items: center;
+  }
+
+  /* CRUD */
+  .crud {
+    display: grid;
+    gap: var(--ds-space-6);
+    grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+    align-items: start;
+  }
+  @media (max-width: 56rem) {
+    .crud {
+      grid-template-columns: 1fr;
+    }
+  }
+  .crud__form {
+    position: sticky;
+    top: var(--ds-space-4);
+  }
+  .form > * + * {
+    margin-top: var(--ds-space-4);
+  }
+  .field label,
+  .field legend {
+    display: block;
+    font-weight: var(--ds-font-weight-semibold);
+    margin-bottom: var(--ds-space-1);
+  }
+  .field fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+  /* DS não tem campo de texto: input nativo com os tokens */
+  .input {
+    box-sizing: border-box;
+    width: 100%;
+    font: inherit;
+    padding: var(--ds-space-2) var(--ds-space-3);
+    border: 1px solid var(--ds-color-border-strong);
+    border-radius: var(--ds-radius-sm);
+    background: var(--ds-color-surface);
+    color: var(--ds-color-text-default);
+  }
+  .input:focus-visible {
+    outline: 2px solid var(--ds-color-focus);
+    outline-offset: 2px;
+  }
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ds-space-3);
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: var(--ds-space-4);
+  }
+  .item__meta {
+    color: var(--ds-color-text-muted);
+    font-size: var(--ds-text-body-small-size);
+    margin: var(--ds-space-1) 0 var(--ds-space-3);
+  }
+  .alert {
+    margin-bottom: var(--ds-space-4);
+  }
+  .muted {
+    color: var(--ds-color-text-muted);
+  }
+
+  /* Entrada escalonada; desligada com reduced-motion */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal > * {
+      animation: rise 0.5s both cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+    .reveal > *:nth-child(2) { animation-delay: 60ms; }
+    .reveal > *:nth-child(3) { animation-delay: 120ms; }
+    .reveal > *:nth-child(4) { animation-delay: 180ms; }
+    .reveal > *:nth-child(5) { animation-delay: 240ms; }
+    .reveal > *:nth-child(6) { animation-delay: 300ms; }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(0.75rem); }
+  }
+}
