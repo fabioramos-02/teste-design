@@ -30,7 +30,8 @@ Procure a mensagem (Ctrl+F).
 
 | Erro | Causa | Solução |
 |---|---|---|
-| `ERR_PNPM_FETCH_401` no Actions | Secret não cadastrado | `gh secret set GITLAB_MS_NPM_TOKEN` |
+| `Secret GITLAB_MS_NPM_TOKEN não cadastrado` | Secret não existe no repositório | `gh secret set GITLAB_MS_NPM_TOKEN` |
+| `ERR_PNPM_FETCH_404 ...tgz` com `An authorization header was used` | Secret vazio ou token inválido (GitLab responde 404, não 401) | Recadastre o secret com token válido |
 | 404 no Actions | Dono do token saiu do grupo ou token expirou | Gere outro token e atualize o secret |
 
 ---
