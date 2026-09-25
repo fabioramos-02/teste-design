@@ -35,4 +35,4 @@ Procure a mensagem (Ctrl+F).
 
 ---
 
-Anterior: [2. Como usar](02-como-usar.md) · Próximo: [4. Sobre a POC](04-poc.md)
+Anterior: [2. Como usar](02-como-usar.md) · Próximo: [4. Sobre o site](04-sobre.md)

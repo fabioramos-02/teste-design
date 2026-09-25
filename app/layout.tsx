@@ -9,20 +9,18 @@ import {
   DsNavbar,
 } from "@plataforma-xvia/ds-react/server";
 import "./app.css";
-import { href, REPO } from "./href";
+import { href } from "./href";
 
 const CRITICAL_CSS = `${DS_TOKENS_CSS}\n${DS_THEMES_CSS}\n${DS_FALLBACK_CSS}`;
 
 const NAV = JSON.stringify([
   { label: "Início", href: href("/"), icon: "home" },
-  { label: "Vistorias", href: href("/vistorias/"), icon: "file-text" },
-  { label: "Documentação", href: href("/docs/"), icon: "book" },
-  { label: "GitHub", href: REPO, icon: "external-link" },
+  { label: "Guia do Design System", href: href("/docs/"), icon: "book" },
 ]);
 
 export const metadata: Metadata = {
-  title: "Bombeiros MS · POC Design System",
-  description: "Prova de conceito do Design System MS (X-Via) — dados fictícios.",
+  title: "Relatório X-VIA · SETDIG",
+  description: "Relatório gerencial do projeto X-VIA — Portal Único e App MS Digital.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -39,12 +37,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               { label: "Ir para rodapé", href: "#rodape" },
             ])}
           />
-          <DsHeader homeHref={href("/")} homeLabel="Início — Bombeiros MS" navItems={NAV}>
+          <DsHeader homeHref={href("/")} homeLabel="Início — Relatório X-VIA" navItems={NAV}>
             <span slot="brand" className="brand">
-              <DsIcon name="flame" size="xl" />
+              <DsIcon name="shield" size="xl" />
               <span>
-                <strong>Corpo de Bombeiros</strong>
-                <small>Mato Grosso do Sul · POC</small>
+                <strong>Projeto X-VIA</strong>
+                <small>SETDIG · Relatório gerencial</small>
               </span>
             </span>
           </DsHeader>
@@ -57,16 +55,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           id="rodape"
           columns={JSON.stringify([
             {
-              heading: "Bombeiros MS",
-              links: [
-                { label: "Solicitar vistoria", href: href("/vistorias/") },
-              ],
-            },
-            {
               heading: "Design System",
               links: [
-                { label: "Documentação da POC", href: href("/docs/") },
-                { label: "Repositório no GitHub", href: REPO },
+                { label: "Guia de uso", href: href("/docs/") },
                 { label: "Storybook", href: "https://designsystem.digital.ms.gov.br" },
                 { label: "Guia React", href: "https://designsystem.digital.ms.gov.br/?path=/docs/primeiros-passos-react--docs" },
               ],
@@ -79,12 +70,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               ],
             },
           ])}
-          bottomLinks={JSON.stringify([{ label: "Dados fictícios — uso demonstrativo", href: "#" }])}
+          bottomLinks={JSON.stringify([{ label: "Uso interno — acesso restrito", href: "#" }])}
         >
           <div slot="address">
-            <strong>Prova de conceito</strong>
+            <strong>Secretaria-Executiva de Transformação Digital — SETDIG</strong>
             <br />
-            Conteúdo fictício para demonstrar componentes do Design System MS.
+            Acompanhamento do Contrato nº 004/2026 (X-VIA Tecnologia).
           </div>
           <span slot="brand">
             <DsIcon name="shield" size="xl" label="Estado de Mato Grosso do Sul" />
