@@ -41,15 +41,6 @@
     grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
     margin-top: var(--ds-space-5);
   }
-  .stack > * + * {
-    margin-top: var(--ds-space-4);
-  }
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--ds-space-2);
-    align-items: center;
-  }
 
   /* Relatório */
   .kpis {
@@ -197,20 +188,5 @@
   }
   .prose blockquote p {
     margin: 0;
-  }
-
-  /* Entrada escalonada; desligada com reduced-motion */
-  @media (prefers-reduced-motion: no-preference) {
-    .reveal > * {
-      animation: rise 0.5s both cubic-bezier(0.2, 0.7, 0.2, 1);
-    }
-    .reveal > *:nth-child(2) { animation-delay: 60ms; }
-    .reveal > *:nth-child(3) { animation-delay: 120ms; }
-    .reveal > *:nth-child(4) { animation-delay: 180ms; }
-    .reveal > *:nth-child(5) { animation-delay: 240ms; }
-    .reveal > *:nth-child(6) { animation-delay: 300ms; }
-  }
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(0.75rem); }
   }
 }

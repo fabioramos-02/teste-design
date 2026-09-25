@@ -60,8 +60,6 @@ O script gera o site, **criptografa cada página com a senha** (StatiCrypt, AES)
 | [3. Erros comuns](docs/03-erros.md) | Mensagem de erro → solução |
 | [4. Sobre o site](docs/04-sobre.md) | Arquivos, atualizar o relatório, publicar com senha, lacunas do DS |
 
-A POC anterior (portal fictício dos Bombeiros com CRUD) está no histórico git, commit `85124d6`.
-
 ## Links
 
 - Storybook: https://designsystem.digital.ms.gov.br

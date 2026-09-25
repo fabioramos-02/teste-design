@@ -37,26 +37,26 @@ Nunca importe o mesmo componente das duas entradas.
 **Server** — `app/page.tsx`:
 
 ```tsx
-import { DsButton, DsServiceCard } from "@plataforma-xvia/ds-react/server";
+import { DsBadge, DsCard } from "@plataforma-xvia/ds-react/server";
 
 export default function Page() {
   return (
-    <>
-      <DsServiceCard heading="Solicitar vistoria" eyebrow="Vistoria" href="/vistorias" headingLevel="3" />
-      <DsButton href="/vistorias" icon="search">Buscar</DsButton>
-    </>
+    <DsCard heading="Login único (SSO gov.br)" headingLevel="3" icon="clock">
+      <DsBadge tone="info" size="sm">Em andamento</DsBadge>
+      <p>Chave de produção disponível.</p>
+    </DsCard>
   );
 }
 ```
 
-**Client** — exemplo (a POC com CRUD completo está no histórico git, commit `85124d6`):
+**Client** — exemplo:
 
 ```tsx
 "use client";
 import { useState } from "react";
 import { DsPagination } from "@plataforma-xvia/ds-react";
 
-export function Faq() {
+export function Paginacao() {
   const [page, setPage] = useState(1);
   return <DsPagination page={page} totalPages={5} onDsPageChange={(e) => setPage(e.detail.page)} />;
 }
@@ -68,12 +68,12 @@ export function Faq() {
 - **Listas vão como JSON em string:**
 
   ```tsx
-  <DsBreadcrumb items={JSON.stringify([{ label: "Início", href: "/" }, { label: "Vistorias" }])} />
+  <DsBreadcrumb items={JSON.stringify([{ label: "Início", href: "/" }, { label: "Relatório" }])} />
   ```
 
 - **Eventos:** `dsX` do componente vira `onDsX` (só no client). Ex.: `onDsPageChange`, `onDsComboboxChange`.
 - **Slots:** filho com `slot="nome"`. Ex.: `<span slot="brand">…</span>` no `DsHeader`.
-- **Ícones:** `icon="flame"`, `"shield"`, `"search"`, `"check-circle"`… (lista em `node_modules/@plataforma-xvia/ds-icons/dist/index.d.ts`).
+- **Ícones:** `icon="file-text"`, `"shield"`, `"search"`, `"check-circle"`… (lista em `node_modules/@plataforma-xvia/ds-icons/dist/index.d.ts`).
 
 ## Formulários
 
@@ -84,8 +84,8 @@ Leia tudo com `FormData` no submit — não precisa de estado por campo:
 function onSubmit(e: React.FormEvent<HTMLFormElement>) {
   e.preventDefault();
   const f = new FormData(e.currentTarget);
-  f.get("tipo");     // DsSelect name="tipo"
-  f.get("urgente");  // DsSwitch: null se desligado
+  f.get("status");    // DsSelect name="status"
+  f.get("destaque");  // DsSwitch: null se desligado
 }
 ```
 
@@ -97,8 +97,8 @@ O DS **não tem** componente de alerta. Use `DsCard` com `tone` + `icon`, dentro
 
 ```tsx
 <div role="status" aria-live="polite">
-  <DsCard tone="success" icon="check-circle" heading="Vistoria cadastrada" headingLevel="3">
-    <p>Protocolo CBM-2026-0412 gerado.</p>
+  <DsCard tone="success" icon="check-circle" heading="Relatório atualizado" headingLevel="3">
+    <p>Dados de 23/09/2026.</p>
   </DsCard>
 </div>
 ```
