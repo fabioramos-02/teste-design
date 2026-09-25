@@ -42,3 +42,4 @@ next-env.d.ts
 
 # relatório real (repo é público)
 /data/relatorio.json
+/out-enc/
