@@ -4,8 +4,10 @@
 // ponytail: senha única compartilhada; login por pessoa exige backend.
 import { execFileSync } from "node:child_process";
 import { createRequire } from "node:module";
-import { readdirSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+
+const ENC = "out-enc";
 
 const senha = process.env.RELATORIO_SENHA;
 if (!senha) {
@@ -30,7 +32,7 @@ run(
   process.execPath,
   [
     join(require.resolve("staticrypt/package.json"), "..", "cli", "index.js"),
-    "out", "-r", "-d", "out",
+    "out", "-r", "-d", ENC,
     "--short", "--remember", "7", "-c", "false",
     "--template-title", "Relatório X-VIA",
     "--template-instructions", "Acesso restrito à SETDIG. Informe a senha do relatório.",
@@ -43,6 +45,18 @@ run(
   ],
   { env: { ...process.env, STATICRYPT_PASSWORD: senha } },
 );
+
+// o staticrypt grava em <ENC>/out/...: copia por cima dos originais em claro
+cpSync(join(ENC, "out"), "out", { recursive: true });
+rmSync(ENC, { recursive: true });
+
+// trava: nenhum HTML pode sair sem criptografia
+const abertos = readdirSync("out", { recursive: true })
+  .filter((f) => f.endsWith(".html") && !readFileSync(join("out", f), "utf8").includes("staticrypt"));
+if (abertos.length) {
+  console.error("HTML sem criptografia, deploy abortado:", abertos);
+  process.exit(1);
+}
 
 // sem .nojekyll o Pages ignora a pasta _next
 writeFileSync("out/.nojekyll", "");
