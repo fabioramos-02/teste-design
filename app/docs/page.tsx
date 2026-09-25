@@ -3,7 +3,7 @@ import { DsBreadcrumb, DsButton, DsPageHeader, DsServiceCard } from "@plataforma
 import { href, REPO } from "../href";
 import { listDocs } from "./lib";
 
-export const metadata: Metadata = { title: "Documentação · Bombeiros MS" };
+export const metadata: Metadata = { title: "Guia do Design System · Relatório X-VIA" };
 
 export default function DocsIndex() {
   return (

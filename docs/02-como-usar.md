@@ -49,7 +49,7 @@ export default function Page() {
 }
 ```
 
-**Client** — exemplo (o CRUD real está em `app/vistorias/crud.tsx`):
+**Client** — exemplo (a POC com CRUD completo está no histórico git, commit `85124d6`):
 
 ```tsx
 "use client";

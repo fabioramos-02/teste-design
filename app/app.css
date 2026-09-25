@@ -51,66 +51,58 @@
     align-items: center;
   }
 
-  /* CRUD */
-  .crud {
+  /* Relatório */
+  .kpis {
     display: grid;
-    gap: var(--ds-space-6);
-    grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
-    align-items: start;
+    grid-template-columns: repeat(auto-fit, minmax(min(8rem, 100%), 1fr));
+    gap: var(--ds-space-3);
+    margin: var(--ds-space-5) 0 0;
   }
-  @media (max-width: 56rem) {
-    .crud {
-      grid-template-columns: 1fr;
-    }
-  }
-  .crud__form {
-    position: sticky;
-    top: var(--ds-space-4);
-  }
-  .form > * + * {
-    margin-top: var(--ds-space-4);
-  }
-  .field label,
-  .field legend {
-    display: block;
-    font-weight: var(--ds-font-weight-semibold);
-    margin-bottom: var(--ds-space-1);
-  }
-  .field fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
-  }
-  /* DS não tem campo de texto: input nativo com os tokens */
-  .input {
-    box-sizing: border-box;
-    width: 100%;
-    font: inherit;
-    padding: var(--ds-space-2) var(--ds-space-3);
-    border: 1px solid var(--ds-color-border-strong);
+  .kpis > div {
+    padding: var(--ds-space-3) var(--ds-space-4);
+    border: 1px solid var(--ds-color-border);
     border-radius: var(--ds-radius-sm);
     background: var(--ds-color-surface);
-    color: var(--ds-color-text-default);
   }
-  .input:focus-visible {
-    outline: 2px solid var(--ds-color-focus);
-    outline-offset: 2px;
+  .kpis dt {
+    color: var(--ds-color-text-muted);
+    font-size: var(--ds-text-body-small-size);
   }
-  .toolbar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--ds-space-3);
-    align-items: end;
-    justify-content: space-between;
-    margin-bottom: var(--ds-space-4);
+  .kpis dd {
+    margin: 0;
+    font-size: var(--ds-text-heading-3-size);
+    font-weight: var(--ds-font-weight-semibold);
+  }
+  .links,
+  .lista {
+    margin: 0;
+    padding-left: var(--ds-space-5);
+    line-height: var(--ds-text-body-large-line-height);
+  }
+  .links a {
+    color: var(--ds-color-link);
+    overflow-wrap: anywhere;
+  }
+  .contrato {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--ds-space-1) var(--ds-space-3);
+    margin: 0;
+  }
+  .contrato dt {
+    font-weight: var(--ds-font-weight-semibold);
+  }
+  .contrato dd {
+    margin: 0;
+  }
+  .fonte {
+    padding-block: var(--ds-space-5);
+    font-size: var(--ds-text-body-small-size);
   }
   .item__meta {
     color: var(--ds-color-text-muted);
     font-size: var(--ds-text-body-small-size);
     margin: var(--ds-space-1) 0 var(--ds-space-3);
-  }
-  .alert {
-    margin-bottom: var(--ds-space-4);
   }
   .muted {
     color: var(--ds-color-text-muted);

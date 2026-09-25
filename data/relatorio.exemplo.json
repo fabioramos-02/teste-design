@@ -1,0 +1,15 @@
+{
+  "periodo": "01/01 a 31/01/2026",
+  "reunioes": 3,
+  "atualizado": "31/01/2026",
+  "resumo": "Conteúdo de exemplo. O relatório real fica em data/relatorio.json, fora do git.",
+  "contrato": { "numero": "Contrato de exemplo", "valor": "R$ 0", "vigencia": "12 meses", "implantacao": "90 dias", "escopo": "Escopo fictício" },
+  "temas": [
+    { "titulo": "Tema concluído", "status": "concluido", "resumo": "Texto fictício." },
+    { "titulo": "Tema em andamento", "status": "andamento", "resumo": "Texto fictício.", "links": [{ "label": "Design System", "href": "https://designsystem.digital.ms.gov.br/" }] },
+    { "titulo": "Tema em atenção", "status": "atencao", "resumo": "Texto fictício." },
+    { "titulo": "Tema em risco", "status": "risco", "resumo": "Texto fictício." }
+  ],
+  "marcos": [{ "marco": "Marco de exemplo", "data": "01/01/2026" }],
+  "foco": ["Item de exemplo."]
+}
